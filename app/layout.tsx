@@ -1,6 +1,9 @@
 import { ClerkProvider } from '@clerk/nextjs';
 import "./globals.css";
 import type { Metadata } from "next";
+import WorkspaceHeader from '../components/customs/WorkspaceHeader';
+import Provider from './provider';
+import WorkspaceBody from '@/components/customs/WorkspaceBody';
 
 export const metadata: Metadata = {
   title: "Next.js Premium Startup Boilerplate",
@@ -14,9 +17,13 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body style={{ margin: 0, padding: 0 }}>
-          {children}
+          <Provider>
+          {/* <WorkspaceHeader /> */}
+            {children}
+          {/* <WorkspaceBody /> */}
+          </Provider>
         </body>
       </html>
     </ClerkProvider>

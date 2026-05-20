@@ -25,8 +25,7 @@ function Provider({
 
     return (
 
-        <UserDetailContext.Provider 
-        value={{userDetail, setUserDetail}}>
+        <UserDetailContext.Provider  value={{ userDetail, setUserDetail }}>
             <div>{children}</div>
         </UserDetailContext.Provider>
 
