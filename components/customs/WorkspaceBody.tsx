@@ -1,13 +1,13 @@
 "use client"
 import { UserDetailContext } from '@/context/UserDetailContext'
 import Image from 'next/image';
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
 import EmptyWorkspace from './EmptyWorkspace';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-// import RepoDialog, { Repo } from './RepoDialog';
+import RepoDialog, { Repo } from './RepoDialog';
 // import UserRepoList from './UserRepoList';
 
 export type UserRepo = {
@@ -64,8 +64,8 @@ function WorkspaceBody() {
 
 
     return (
-        <div>
-            <div className='flex justify-between items-center'>
+        <div className='mx-auto max-w-6xl p-10'>
+            <div className='flex justify-between items-center mt-10'>
                 <h2 className='text-4xl font-medium'>Workspace</h2>
                 <h2 className='text-blue-800 bg-blue-100 px-2 rounded-lg'>Remaining Credits: {userDetail?.credits}</h2>
             </div>
@@ -78,11 +78,19 @@ function WorkspaceBody() {
                 </div>
                 <div>
 
-                    {/* {!token ? <Button onClick={OnAddRepo}>Setup</Button>
-                        : 
-                        <RepoDialog setRefreshPage={(refresh: boolean) => GetUserAddedRepoList()} />} */}
+                    {!token ? <Button onClick={OnAddRepo}>Setup</Button>
+                        :
+                        <RepoDialog setRefreshPage={(refresh: boolean) => GetUserAddedRepoList()} />}
+
+
                 </div>
             </Card>
+
+            {/* <Card className='mt-10'>
+                <CardContent>
+                    <EmptyWorkspace />
+                </CardContent>
+            </Card> */}
 
             {loading ? (
                 <div className='mt-10'>
@@ -107,4 +115,4 @@ function WorkspaceBody() {
     )
 }
 
-export default WorkspaceBody
+export default WorkspaceBody;

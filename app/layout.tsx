@@ -20,8 +20,9 @@ export default function RootLayout({
       <html lang="en" suppressHydrationWarning>
         <body style={{ margin: 0, padding: 0 }}>
           <Provider>
-          <WorkspaceHeader />
+          {/* <WorkspaceHeader /> */}
             {children}
+          {/* <WorkspaceBody /> */}
           </Provider>
         </body>
       </html>
