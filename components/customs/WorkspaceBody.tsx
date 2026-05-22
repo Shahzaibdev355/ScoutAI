@@ -8,7 +8,7 @@ import EmptyWorkspace from './EmptyWorkspace';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import RepoDialog, { Repo } from './RepoDialog';
-// import UserRepoList from './UserRepoList';
+import UserRepoList from './UserRepoList';
 
 export type UserRepo = {
     id: number;
@@ -106,9 +106,9 @@ function WorkspaceBody() {
                     </CardContent>
                 </Card>
             ) : (
-                // <UserRepoList repoList={userRepoList} setReload={() => GetUserAddedRepoList()} />
-                <div>Empty</div>
+                <UserRepoList repoList={userRepoList} setReload={() => GetUserAddedRepoList()} />
             )}
+
 
 
         </div>
