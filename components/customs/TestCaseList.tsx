@@ -6,7 +6,7 @@ import { Badge } from '../ui/badge'
 import { Play, RefreshCw, Settings, SettingsIcon } from 'lucide-react'
 import { Button } from '../ui/button'
 import TestCaseSettingDialog from './TestCaseSettingDialog'
-// import TestExecutionModal from './TestCaseExecutionModel'
+import TestExecutionModal from './TestExecutionModal'
 
 type Props = {
     testCases: TestCase[],
@@ -64,12 +64,12 @@ function TestCaseList({ testCases, onReload, repository }: Props) {
                 </div>
             </div>
 
-            {/* <TestExecutionModal
+            <TestExecutionModal
                 testCases={selectedTestCases}
                 repository={repository}
                 isOpen={isModelOpen}
                 onClose={() => { setIsModelOpen(false); onReload(repository?.repoId) }}
-            /> */}
+            />
         </div>
     )
 }
