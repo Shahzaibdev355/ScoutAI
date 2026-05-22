@@ -11,7 +11,7 @@ import { CheckCircle2, Globe2Icon, Link2Icon, ListChecks, Loader2, Loader2Icon, 
 import { Button } from '../ui/button'
 import axios from 'axios'
 import { UserDetailContext } from '@/context/UserDetailContext'
-// import TestCaseList from './TestCaseList'
+import TestCaseList from './TestCaseList'
 // import RepoSettings from './RepoSettings'
 
 import test from 'node:test'
@@ -172,12 +172,12 @@ function UserRepoList({ repoList, setReload }: props) {
                                     />
                                 </div>
 
-                                {/* {!testCaseLoading && testCases.length > 0
+                                {!testCaseLoading && testCases.length > 0
                                     && <TestCaseList testCases={testCases} onReload={(repoId: number) => GetTestCases(repoId)}
                                         repository={repo}
-                                    />} */}
+                                    />}
 
-                                {/* {testCaseLoading ?
+                                {testCaseLoading ?
                                     <h2 className='flex gap-3 items-center'> <Loader2Icon className='animate-spin' /> Please Wait... </h2>
                                     :
                                     testCases?.length == 0 && <div className='flex flex-col sm:flex-row sm:items-center justify-between gap-4 border rounded-xl p-4 bg-gray-50'>
@@ -196,7 +196,7 @@ function UserRepoList({ repoList, setReload }: props) {
                                             {loading ? <Loader2 className='animate-spin' /> : <Sparkles className='h-4 w-4' />}
                                             Generate Test Cases
                                         </Button>
-                                    </div>} */}
+                                    </div>}
                             </div>
                         </AccordionContent>
 
