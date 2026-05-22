@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
 import { db } from "@/db";
@@ -5,7 +7,8 @@ import { TestCasesTable, repositories, users } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { cookies } from "next/headers";
 import { Browserbase } from "@browserbasehq/sdk";
-import { chromium } from "playwright-core";
+// import { chromium } from "playwright-core";
+import { chromium } from "playwright";
 
 const ai = new GoogleGenAI({
     apiKey: process.env.GEMINI_API_KEY!,
