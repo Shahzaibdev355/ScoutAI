@@ -5,8 +5,8 @@ import { Checkbox } from '../ui/checkbox'
 import { Badge } from '../ui/badge'
 import { Play, RefreshCw, Settings, SettingsIcon } from 'lucide-react'
 import { Button } from '../ui/button'
-// import TestCaseSettingDialog from './TestCaseSettingDialog'
-// import TestExecutionModal from './TestCaseExecutionModel'
+import TestCaseSettingDialog from './TestCaseSettingDialog'
+import TestExecutionModal from './TestExecutionModal'
 
 type Props = {
     testCases: TestCase[],
@@ -53,7 +53,7 @@ function TestCaseList({ testCases, onReload, repository }: Props) {
                             {testCase?.status == 'running' && <Badge variant={'default'} className='text-yellow-200 font-normal bg-yellow-700'>{testCase?.status}</Badge>}
                             {testCase?.status == 'generated' && <Badge variant={'secondary'} >{'Pending'}</Badge>}
 
-                            {/* <TestCaseSettingDialog testCase={testCase} setReload={() => onReload(repository?.repoId)} /> */}
+                            <TestCaseSettingDialog testCase={testCase} setReload={() => onReload(repository?.repoId)} />
 
                         </div>
                     </div>
@@ -64,12 +64,12 @@ function TestCaseList({ testCases, onReload, repository }: Props) {
                 </div>
             </div>
 
-            {/* <TestExecutionModal
+            <TestExecutionModal
                 testCases={selectedTestCases}
                 repository={repository}
                 isOpen={isModelOpen}
                 onClose={() => { setIsModelOpen(false); onReload(repository?.repoId) }}
-            /> */}
+            />
         </div>
     )
 }
