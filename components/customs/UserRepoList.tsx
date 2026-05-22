@@ -12,7 +12,7 @@ import { Button } from '../ui/button'
 import axios from 'axios'
 import { UserDetailContext } from '@/context/UserDetailContext'
 import TestCaseList from './TestCaseList'
-// import RepoSettings from './RepoSettings'
+import RepoSettings from './RepoSettings'
 
 import test from 'node:test'
 type props = {
@@ -139,7 +139,7 @@ function UserRepoList({ repoList, setReload }: props) {
                                         <h2>Target Domain:</h2>
                                         <h2 className='bg-white p-1 px-2 border rounded-md text-primary font-medium'>{repo?.targetDomain}</h2>
                                     </div>
-                                    {/* <RepoSettings repo={repo} setReload={setReload} /> */}
+                                    <RepoSettings repo={repo} setReload={setReload} />
                                 </div>
                                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
 
