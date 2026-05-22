@@ -6,8 +6,8 @@ import Provider from './provider';
 // import WorkspaceBody from '@/components/customs/WorkspaceBody';
 
 export const metadata: Metadata = {
-  title: "Next.js Premium Startup Boilerplate",
-  description: "Created using the ultimate interactive Next.js stack generator CLI.",
+  title: "ScoutAI | AI Powered Code Testing & Automation",
+  description: "Connect your GitHub repositories, generate intelligent test workflows, detect issues automatically, and accelerate software delivery with AI agents.",
 };
 
 export default function RootLayout({

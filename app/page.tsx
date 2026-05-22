@@ -213,7 +213,7 @@ const TerminalMockup: FC = () => {
           <span key={c} style={{ width: 12, height: 12, borderRadius: "50%", background: c, display: "inline-block" }} />
         ))}
         <span style={{ fontFamily: "'Geist Mono', monospace", fontSize: 11, color: "#6b7a5e", marginLeft: 8 }}>
-          autotest — zsh
+          ScountAI
         </span>
       </div>
       {/* Lines */}
@@ -325,7 +325,7 @@ const FEATURES: Feature[] = [
 // ─── Steps Data ───────────────────────────────────────────────────
 interface Step { n: string; icon: string; title: string; desc: string }
 const STEPS: Step[] = [
-  { n: "01", icon: "⬡", title: "Connect your GitHub repo", desc: "Authorize GitHub and select a repository. AutoTest reads your branch, pulls the code, and begins mapping your application structure." },
+  { n: "01", icon: "⬡", title: "Connect your GitHub repo", desc: "Authorize GitHub and select a repository. ScoutAI reads your branch, pulls the code, and begins mapping your application structure." },
   { n: "02", icon: "✦", title: "AI generates test cases", desc: "Our model analyzes routes, components, and user flows. It outputs a full test suite — E2E journeys, edge cases, and regression checks." },
   { n: "03", icon: "☁", title: "Browserbase runs the tests", desc: "Tests execute in real browsers on Browserbase's cloud grid. Parallel runs, multiple viewports, full session recordings included." },
   { n: "04", icon: "✓", title: "Review results & iterate", desc: "Get a structured report with pass/fail status, video replays, diffs, and AI-generated fix suggestions. Ship with confidence." },
@@ -416,7 +416,7 @@ const AutoTestLanding: FC = () => {
                 display: "flex", alignItems: "center", justifyContent: "center",
                 fontSize: 16, boxShadow: `0 4px 12px ${C.primary}44`,
               }}>⚡</div>
-              <span style={{ fontFamily: "'Geist', sans-serif", fontWeight: 600, fontSize: 16, letterSpacing: "-0.02em", color: C.ink }}>AutoTest</span>
+              <span style={{ fontFamily: "'Geist', sans-serif", fontWeight: 600, fontSize: 16, letterSpacing: "-0.02em", color: C.ink }}>ScoutAI</span>
               <span style={{
                 fontFamily: "'Geist Mono', monospace", fontSize: 10, fontWeight: 500,
                 color: C.primary, background: C.primaryBg, border: `1px solid ${C.primaryMid}`,
@@ -442,7 +442,7 @@ const AutoTestLanding: FC = () => {
                 <MagicButton>Connect GitHub →</MagicButton>
               </Link>
             </div>
-            
+
           </div>
         </header>
 
@@ -733,10 +733,10 @@ const AutoTestLanding: FC = () => {
           <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
               <div style={{ width: 28, height: 28, borderRadius: 8, background: `linear-gradient(135deg, ${C.primaryDark}, ${C.primary})`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13 }}>⚡</div>
-              <span style={{ fontFamily: "'Geist', sans-serif", fontWeight: 600, fontSize: 15, color: C.ink }}>AutoTest AI</span>
+              <span style={{ fontFamily: "'Geist', sans-serif", fontWeight: 600, fontSize: 15, color: C.ink }}>Scout AI</span>
             </div>
             <span style={{ fontFamily: "'Geist', sans-serif", fontSize: 13, color: C.subtle }}>
-              © {new Date().getFullYear()} AutoTest AI. All rights reserved.
+              © {new Date().getFullYear()} ScoutAI AI. All rights reserved.
             </span>
             <div style={{ display: "flex", gap: 24 }}>
               {(["Terms", "Privacy", "Contact", "Docs"] as string[]).map(l => (
