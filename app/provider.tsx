@@ -1,6 +1,7 @@
 
 "use client"
 import { UserDetailContext } from '@/context/UserDetailContext';
+import { Toaster } from '@/components/ui/sonner';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
@@ -27,6 +28,7 @@ function Provider({
 
         <UserDetailContext.Provider  value={{ userDetail, setUserDetail }}>
             <div>{children}</div>
+            <Toaster />
         </UserDetailContext.Provider>
 
     )

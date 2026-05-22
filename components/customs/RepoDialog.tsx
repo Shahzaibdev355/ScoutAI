@@ -15,6 +15,7 @@ import { Button } from '../ui/button'
 import axios from 'axios';
 import { Input } from '../ui/input';
 import { UserDetailContext } from '@/context/UserDetailContext';
+import { toast } from 'sonner';
 
 export type Repo = {
     id: number;
@@ -57,23 +58,33 @@ function RepoDialog({ setRefreshPage }: { setRefreshPage: (refresh: boolean) => 
     const SaveRepoToDB = async () => {
         if (!selectedRepo) return;
 
-        const result = await axios.post('/api/user-repo', {
-            repoId: selectedRepo.id,
-            name: selectedRepo.name,
-            full_name: selectedRepo.full_name,
-            private_: selectedRepo.private_,
-            html_url: selectedRepo.html_url,
-            description: selectedRepo.description,
-            userId: userDetail?.id,
-            owner: selectedRepo.owner,
-            updatedAt: selectedRepo.updated_at,
-            language: selectedRepo.language,
-            default_branch: selectedRepo.default_branch,
-        });
+        try {
+            const result = await axios.post('/api/user-repo', {
+                repoId: selectedRepo.id,
+                name: selectedRepo.name,
+                full_name: selectedRepo.full_name,
+                private_: selectedRepo.private_,
+                html_url: selectedRepo.html_url,
+                description: selectedRepo.description,
+                userId: userDetail?.id,
+                owner: selectedRepo.owner,
+                updatedAt: selectedRepo.updated_at,
+                language: selectedRepo.language,
+                default_branch: selectedRepo.default_branch,
+            });
 
-        console.log(result.data);
-        setIsOpen(false);
-        setRefreshPage(true);
+            console.log(result.data);
+            toast.success("Repository added successfully!");
+            setIsOpen(false);
+            setRefreshPage(true);
+        } catch (error: any) {
+            if (error.response?.status === 409 && error.response?.data?.alreadyExists) {
+                toast.error("Repository already added!");
+            } else {
+                toast.error("Failed to add repository. Please try again.");
+            }
+            console.error("Error adding repository:", error);
+        }
     }
 
     return (
