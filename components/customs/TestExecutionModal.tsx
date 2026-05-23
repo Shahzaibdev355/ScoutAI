@@ -52,7 +52,8 @@ type RunResult = {
 };
 
 export default function TestExecutionModal({ isOpen, onClose, testCases, repository }: Props) {
-    const [baseUrl, setBaseUrl] = useState("http://localhost:3000");
+    // const [baseUrl, setBaseUrl] = useState("http://localhost:3000");
+    const [baseUrl, setBaseUrl] = useState("");
     const [currentIdx, setCurrentIdx] = useState<number>(-1);
     const [isExecuting, setIsExecuting] = useState(false);
     const [results, setResults] = useState<Record<number, RunResult>>({});
