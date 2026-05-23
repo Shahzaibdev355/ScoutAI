@@ -7,8 +7,8 @@ import { TestCasesTable, repositories, users } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { cookies } from "next/headers";
 import { Browserbase } from "@browserbasehq/sdk";
-import { chromium } from "playwright-core";
-// import { chromium } from "playwright";
+// import { chromium } from "playwright-core";
+import { chromium } from "playwright";
 
 const ai = new GoogleGenAI({
     apiKey: process.env.GEMINI_API_KEY!,
@@ -287,7 +287,13 @@ Rules for your code:
 
             logs.push(`[SYSTEM] Browserbase session created successfully with ID: ${session.id}`);
 
-            browser = await chromium.connectOverCDP(session.connectUrl);
+            // browser = await chromium.connectOverCDP(session.connectUrl);
+
+            // Browserbase provides a WebSocket CDP URL — connect via Playwright's CDP
+            browser = await chromium.connectOverCDP(session.connectUrl, {
+                timeout: 30000,
+            });
+
             const context = browser.contexts()[0];
             const page = context.pages()[0];
 
