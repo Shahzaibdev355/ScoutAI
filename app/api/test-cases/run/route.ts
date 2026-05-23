@@ -1,4 +1,4 @@
-export const runtime = "nodejs";
+// export const runtime = "nodejs";
 
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
@@ -7,8 +7,13 @@ import { TestCasesTable, repositories, users } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { cookies } from "next/headers";
 import { Browserbase } from "@browserbasehq/sdk";
-// import { chromium } from "playwright-core";
-import { chromium } from "playwright";
+import { chromium } from "playwright-core";
+// import { chromium } from "playwright";
+
+// import chromium from '@sparticuz/chromium';
+
+
+// import puppeteer from 'puppeteer-core';
 
 const ai = new GoogleGenAI({
     apiKey: process.env.GEMINI_API_KEY!,
@@ -227,6 +232,7 @@ Rules for your code:
 11. Just return the executable code.
 `;
 
+
             const response = await ai.models.generateContent({
                 model: "gemini-3.1-flash-lite",
                 contents: prompt,
@@ -287,15 +293,22 @@ Rules for your code:
 
             logs.push(`[SYSTEM] Browserbase session created successfully with ID: ${session.id}`);
 
-            // browser = await chromium.connectOverCDP(session.connectUrl);
+            browser = await chromium.connectOverCDP(session.connectUrl);
 
-            // Browserbase provides a WebSocket CDP URL — connect via Playwright's CDP
-            browser = await chromium.connectOverCDP(session.connectUrl, {
-                timeout: 30000,
-            });
+            // browser = await puppeteer.connect({ browserWSEndpoint: session.connectUrl });
+
 
             const context = browser.contexts()[0];
             const page = context.pages()[0];
+
+
+            // REPLACE WITH THESE (Puppeteer API)
+            // const pages = await browser.pages();
+            // const page = pages[0];
+
+            // Patch Puppeteer page to support Playwright-style waitForTimeout
+            // (page as any).waitForTimeout = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
 
             // 6. Listen to Browser Console Events
             page.on("console", (msg: any) => {
@@ -350,7 +363,9 @@ Rules for your code:
             });
         } catch (execError: any) {
             console.error("Script execution error:", execError);
-            logs.push(`[SYSTEM ERROR] Script execution failed: ${execError.message || String(execError)}`);
+            // logs.push(`[SYSTEM ERROR] Script execution failed: ${execError.message || String(execError)}`);
+            logs.push(`[SYSTEM ERROR] Script execution failed: ${execError.message || String(execError)} | Name: ${execError.name} | Stack: ${execError.stack}`);
+
 
             // Clean up session and browser if still active
             if (browser) {
