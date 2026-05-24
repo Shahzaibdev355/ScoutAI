@@ -1,4 +1,5 @@
 // export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
@@ -352,6 +353,17 @@ Rules for your code:
             const newCredits = user.credits - creditDeduction;
             await db.update(users).set({ credits: newCredits }).where(eq(users.id, user.id));
 
+            // return NextResponse.json({
+            //     success: true,
+            //     status: "passed",
+            //     sessionId: session.id,
+            //     sessionUrl: `https://www.browserbase.com/sessions/${session.id}`,
+            //     logs,
+            //     browserbaseScript: scriptText,
+            //     credits: newCredits,
+            // });
+
+
             return NextResponse.json({
                 success: true,
                 status: "passed",
@@ -360,7 +372,14 @@ Rules for your code:
                 logs,
                 browserbaseScript: scriptText,
                 credits: newCredits,
+            }, {
+                headers: {
+                    "Access-Control-Allow-Origin": "https://scount-ai.vercel.app",
+                    "Access-Control-Allow-Methods": "POST",
+                    "Access-Control-Allow-Headers": "Content-Type",
+                }
             });
+
         } catch (execError: any) {
             console.error("Script execution error:", execError);
             // logs.push(`[SYSTEM ERROR] Script execution failed: ${execError.message || String(execError)}`);
@@ -388,6 +407,17 @@ Rules for your code:
             const newCredits = user.credits - creditDeduction;
             await db.update(users).set({ credits: newCredits }).where(eq(users.id, user.id));
 
+            // return NextResponse.json({
+            //     success: false,
+            //     status: "failed",
+            //     error: execError.message || String(execError),
+            //     sessionId: session?.id,
+            //     sessionUrl: session ? `https://www.browserbase.com/sessions/${session.id}` : null,
+            //     logs,
+            //     browserbaseScript: scriptText,
+            //     credits: newCredits,
+            // });
+
             return NextResponse.json({
                 success: false,
                 status: "failed",
@@ -397,7 +427,14 @@ Rules for your code:
                 logs,
                 browserbaseScript: scriptText,
                 credits: newCredits,
+            }, {
+                headers: {
+                    "Access-Control-Allow-Origin": "https://scount-ai.vercel.app",
+                    "Access-Control-Allow-Methods": "POST",
+                    "Access-Control-Allow-Headers": "Content-Type",
+                }
             });
+
         }
     } catch (error: any) {
         console.error("API endpoint error:", error);
@@ -409,4 +446,18 @@ Rules for your code:
             { status: 500 }
         );
     }
+}
+
+
+
+
+
+export async function OPTIONS() {
+    return NextResponse.json({}, {
+        headers: {
+            "Access-Control-Allow-Origin": "https://scount-ai.vercel.app",
+            "Access-Control-Allow-Methods": "POST",
+            "Access-Control-Allow-Headers": "Content-Type",
+        }
+    });
 }
