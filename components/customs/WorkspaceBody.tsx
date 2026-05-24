@@ -71,7 +71,7 @@ function WorkspaceBody() {
 
   return (
     <div className="mx-auto max-w-6xl p-10">
-      <div className="flex justify-between items-center mt-10">
+      <div className="flex justify-between items-center mt-1">
         <h2 className="text-4xl font-medium">Workspace</h2>
         <h2 className="text-blue-800 bg-blue-100 px-2 rounded-lg">
           Remaining Credits: {userDetail?.credits}
@@ -89,7 +89,7 @@ function WorkspaceBody() {
         </div>
         <div className="flex gap-2">
           {!token ? (
-            <Button onClick={OnAddRepo}>Setup</Button>
+            <Button onClick={OnAddRepo}className="cursor-pointer">Setup</Button>
           ) : (
             <>
               <RepoDialog
@@ -98,7 +98,7 @@ function WorkspaceBody() {
               <Button
                 variant="outline"
                 onClick={OnDisconnectGithub}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 cursor-pointer"
               >
                 <Image
                   src={"/github.png"}

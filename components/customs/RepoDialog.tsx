@@ -90,7 +90,7 @@ function RepoDialog({ setRefreshPage }: { setRefreshPage: (refresh: boolean) => 
     return (
         <Dialog open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
             <DialogTrigger>
-                <Button>+Add Repo</Button>
+                <Button className='cursor-pointer'>+Add Repo</Button>
             </DialogTrigger>
             <DialogContent>
                 <DialogHeader>
@@ -112,7 +112,7 @@ function RepoDialog({ setRefreshPage }: { setRefreshPage: (refresh: boolean) => 
                 </div>
                 <DialogFooter className='flex gap-5'>
                     <DialogClose>Cancel</DialogClose>
-                    <Button onClick={() => SaveRepoToDB()}>Add</Button>
+                    <Button onClick={() => SaveRepoToDB()} className='cursor-pointer'>Add</Button>
                 </DialogFooter>
             </DialogContent>
 
