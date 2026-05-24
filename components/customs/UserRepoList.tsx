@@ -190,7 +190,7 @@ function UserRepoList({ repoList, setReload }: props) {
                                             </p>
                                         </div>
 
-                                        <Button className='gap-2'
+                                        <Button className='gap-2 cursor-pointer'
                                             disabled={loading}
                                             onClick={() => handleGenerateTestCases(repo)}>
                                             {loading ? <Loader2 className='animate-spin' /> : <Sparkles className='h-4 w-4' />}
