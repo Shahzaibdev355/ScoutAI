@@ -132,7 +132,8 @@ export default function TestExecutionModal({ isOpen, onClose, testCases, reposit
 
             try {
                 // Call run API with advanced flags
-                const res = await axios.post("/api/test-cases/run", {
+                // "/api/test-cases/run"
+                const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/test-cases/run`, {
                     testCaseId: tcId,
                     baseUrl: baseUrl.trim(),
                     mode: executionMode, // "cache" (direct run) or "generate" (regenerate)
